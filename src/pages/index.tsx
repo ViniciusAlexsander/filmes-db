@@ -1,8 +1,5 @@
-import Head from "next/head";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getTopRatedMovies, movie } from "../services/hooks/useFilmes";
-import styles from "../styles/Home.module.css";
 
 export default function Home() {
   const [topRated, setTopRated] = useState<movie[] | undefined>(undefined);
@@ -10,13 +7,10 @@ export default function Home() {
   useEffect(() => {
     const obterTopRated = async () => {
       const response = await getTopRatedMovies(1);
-      console.log(response);
-      setTopRated(response.results);
+      setTopRated(response.movies);
     };
 
-    console.log(topRated);
     obterTopRated();
-    console.log(topRated);
   }, []);
 
   return (
@@ -24,7 +18,12 @@ export default function Home() {
       Teste
       <div>
         {topRated &&
-          topRated.map((movie) => <p key={movie.id}>{movie.title}</p>)}
+          topRated.map((movie) => (
+            <div key={movie.id} style={{ marginBottom: "16px" }}>
+              <img src={movie.poster_path}></img>
+              <strong>{movie.title}</strong>
+            </div>
+          ))}
       </div>
     </div>
   );

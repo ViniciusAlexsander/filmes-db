@@ -1,4 +1,4 @@
-import { axiosMovies } from "../api";
+import { axiosMovies, axiosMoviesUrl } from "../api";
 
 export type movie = {
   poster_path: string | null;
@@ -8,7 +8,7 @@ export type movie = {
 };
 
 export type GetTopRatedMoviesResponse = {
-  results: movie[];
+  movies: movie[];
 };
 
 export async function getTopRatedMovies(
@@ -18,5 +18,12 @@ export async function getTopRatedMovies(
     params: { page },
   });
 
-  return data;
+  const movies = data.results.map((movie) => {
+    return {
+      ...movie,
+      poster_path: `${axiosMoviesUrl.small}${movie.poster_path}`,
+    };
+  });
+
+  return { movies };
 }
