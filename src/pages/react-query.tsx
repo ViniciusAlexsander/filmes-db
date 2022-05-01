@@ -1,6 +1,7 @@
-import { Box, Heading } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { Box, Heading, Flex, Spinner, Text } from "@chakra-ui/react";
+import { useState } from "react";
 import { MoviesList } from "../components/moviesList";
+import { Pagination } from "../components/Pagination";
 import { useTopRatedMovies } from "../services/hooks/useFilmes";
 
 export default function ReactQuery() {
@@ -10,7 +11,27 @@ export default function ReactQuery() {
   return (
     <Box width="100%" height="100vh" my="6" maxWidth={1480} mx="auto" px="6">
       <Heading my="10"> Listagem com react query</Heading>
-      {data && <MoviesList movies={data.movies} />}
+      {isLoading ? (
+        <Flex justify="center">
+          <Spinner />
+        </Flex>
+      ) : error ? (
+        <Flex justify="center">
+          <Text>Falha</Text>
+        </Flex>
+      ) : (
+        <Box>
+          <MoviesList movies={data.movies} />
+          <Flex p="10" justifyContent="center">
+            <Pagination
+              totalCountOfRegisters={data.totalResults}
+              registersPerPage={20}
+              currentPage={page}
+              onPageChange={setPage}
+            />
+          </Flex>
+        </Box>
+      )}
     </Box>
   );
 }

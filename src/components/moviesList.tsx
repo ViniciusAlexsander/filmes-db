@@ -10,13 +10,7 @@ export function MoviesList({ movies }: MoviesListProps) {
   return (
     <SimpleGrid minChildWidth="300px" spacing="8">
       {movies &&
-        movies.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            poster_path={movie.poster_path}
-            title={movie.title}
-          />
-        ))}
+        movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
     </SimpleGrid>
   );
 }

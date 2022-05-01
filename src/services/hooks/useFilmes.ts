@@ -6,10 +6,15 @@ export type movie = {
   title: string;
   genre_ids: number[];
   id: number;
+  release_date: string;
+  original_title: string;
+  vote_average: number;
+  overview: string;
 };
 
 export type GetTopRatedMoviesResponse = {
   movies: movie[];
+  totalResults: number;
 };
 
 export async function getTopRatedMovies(
@@ -26,7 +31,9 @@ export async function getTopRatedMovies(
     };
   });
 
-  return { movies };
+  console.log(movies);
+
+  return { movies, totalResults: data.total_results };
 }
 
 export function useTopRatedMovies(page: number) {
