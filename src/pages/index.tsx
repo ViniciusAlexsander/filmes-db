@@ -1,30 +1,48 @@
-import { useEffect, useState } from "react";
-import { getTopRatedMovies, movie } from "../services/hooks/useFilmes";
+import NextLink from "next/link";
+import { Flex, Heading, Button } from "@chakra-ui/react";
 
 export default function Home() {
-  const [topRated, setTopRated] = useState<movie[] | undefined>(undefined);
-
-  useEffect(() => {
-    const obterTopRated = async () => {
-      const response = await getTopRatedMovies(1);
-      setTopRated(response.movies);
-    };
-
-    obterTopRated();
-  }, []);
-
   return (
-    <div>
-      Teste
-      <div>
-        {topRated &&
-          topRated.map((movie) => (
-            <div key={movie.id} style={{ marginBottom: "16px" }}>
-              <img src={movie.poster_path}></img>
-              <strong>{movie.title}</strong>
-            </div>
-          ))}
-      </div>
-    </div>
+    <Flex
+      width="100%"
+      height="100vh"
+      my="6"
+      maxWidth={1480}
+      mx="auto"
+      px="6"
+      alignItems="center"
+      flexDirection="column"
+    >
+      <Heading marginTop="20">Filmes DB</Heading>
+      <Flex
+        marginTop="20"
+        width="60%"
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <NextLink href="/tradicional" passHref>
+          <Button
+            as="a"
+            size="sm"
+            fontSize="sm"
+            color="white"
+            backgroundColor="azul"
+          >
+            Listagem tradicional
+          </Button>
+        </NextLink>
+        <NextLink href="/tradicional" passHref>
+          <Button
+            as="a"
+            size="sm"
+            fontSize="sm"
+            color="white"
+            backgroundColor="azul"
+          >
+            Listagem com react query
+          </Button>
+        </NextLink>
+      </Flex>
+    </Flex>
   );
 }

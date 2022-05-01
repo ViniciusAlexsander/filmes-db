@@ -4,12 +4,11 @@ export const theme = extendTheme({
   colors: {
     azul: "#22445B",
     cinza: "#EDECEB",
-    bege: "#C9A37F",
     azulEscuro: "#1A232D",
   },
   fonts: {
-    body: "Montserrat",
-    heading: "Montserrat",
+    body: "Roboto Mono",
+    heading: "Roboto Mono",
   },
   styles: {
     global: {
