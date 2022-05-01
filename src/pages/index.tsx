@@ -31,7 +31,7 @@ export default function Home() {
             Listagem tradicional
           </Button>
         </NextLink>
-        <NextLink href="/tradicional" passHref>
+        <NextLink href="/react-query" passHref>
           <Button
             as="a"
             size="sm"

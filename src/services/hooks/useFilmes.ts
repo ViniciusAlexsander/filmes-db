@@ -1,3 +1,4 @@
+import { useQuery } from "react-query";
 import { axiosMovies, axiosMoviesUrl } from "../api";
 
 export type movie = {
@@ -26,4 +27,10 @@ export async function getTopRatedMovies(
   });
 
   return { movies };
+}
+
+export function useTopRatedMovies(page: number) {
+  return useQuery(["topRatedMovies", page], () => getTopRatedMovies(page), {
+    staleTime: 1000 * 60 * 10,
+  });
 }
