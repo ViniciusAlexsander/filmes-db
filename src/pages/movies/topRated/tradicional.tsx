@@ -1,8 +1,8 @@
 import { Box, Flex, Heading, Spinner } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { MoviesList } from "../components/moviesList";
-import { Pagination } from "../components/Pagination";
-import { getTopRatedMovies, movie } from "../services/hooks/useFilmes";
+import { MoviesList } from "../../../components/moviesList";
+import { Pagination } from "../../../components/Pagination";
+import { getTopRatedMovies, movie } from "../../../services/hooks/useFilmes";
 
 export default function Tradicional() {
   const [page, setPage] = useState(1);

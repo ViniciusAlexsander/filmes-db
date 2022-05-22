@@ -1,15 +1,19 @@
 import NextLink from "next/link";
 import { Flex, Heading, Button } from "@chakra-ui/react";
-import { setCookie } from "nookies";
-
-import { createRequestToken, createAccessToken } from "../services/hooks/auth";
+import { useEffect } from "react";
+import { createAccessToken } from "../services/hooks/auth";
+import { parseCookies } from "nookies";
 
 export default function Home() {
   const handleCreateToken = async () => {
-    const { request_token } = await createRequestToken();
-    localStorage.setItem("request_token", request_token);
-    window.location.href = `https://www.themoviedb.org/auth/access?request_token=${request_token}`;
+    const request_token = localStorage.getItem("request_token");
+    const accessToken = await createAccessToken(request_token);
+    console.log(accessToken);
   };
+
+  useEffect(() => {
+    handleCreateToken();
+  }, []);
 
   return (
     <Flex
@@ -35,7 +39,6 @@ export default function Home() {
           fontSize="sm"
           color="white"
           backgroundColor="azul"
-          onClick={handleCreateToken}
         >
           Login
         </Button>
