@@ -31,7 +31,7 @@ export default function Home() {
             Listagem tradicional
           </Button>
         </NextLink>
-        <NextLink href="/react-query" passHref>
+        <NextLink href="/stale" passHref>
           <Button
             as="a"
             size="sm"
@@ -40,6 +40,17 @@ export default function Home() {
             backgroundColor="azul"
           >
             Listagem com react query
+          </Button>
+        </NextLink>
+        <NextLink href="/react-query" passHref>
+          <Button
+            as="a"
+            size="sm"
+            fontSize="sm"
+            color="white"
+            backgroundColor="azul"
+          >
+            Listagem com react query e pagination
           </Button>
         </NextLink>
       </Flex>
