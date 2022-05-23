@@ -14,11 +14,12 @@ export type CreateAccessTokenResponse = {
   status_message: string;
   success: boolean;
   status_code: number;
+  access_token: string;
 };
 
 export async function createRequestToken(): Promise<CreateRequestTokenResponse> {
   const { data } = await axiosMoviesV4.post(`/auth/request_token`, {
-    redirect_to: "http://localhost:3000/logado",
+    redirect_to: "http://localhost:3000/movies/watchlist/tradicional",
   });
 
   return data;
