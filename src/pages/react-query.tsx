@@ -2,11 +2,11 @@ import { Box, Heading, Flex, Spinner, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { MoviesList } from "../components/moviesList";
 import { Pagination } from "../components/Pagination";
-import { useTopRatedMoviesStale } from "../services/hooks/useFilmes";
+import { useTopRatedMovies } from "../services/hooks/useFilmes";
 
 export default function ReactQuery() {
   const [page, setPage] = useState(1);
-  const { data, isLoading, isFetching, error } = useTopRatedMoviesStale(page);
+  const { data, isLoading, isFetching, error } = useTopRatedMovies(page);
 
   return (
     <Box width="100%" height="100vh" my="6" maxWidth={1480} mx="auto" px="6">

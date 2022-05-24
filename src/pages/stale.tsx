@@ -34,19 +34,7 @@ export default function ReactQuery() {
               queryClient.invalidateQueries("topRatedMoviesStale");
             }}
           >
-            Invalidar todo cache
-          </Button>
-          <Button
-            as="a"
-            size="sm"
-            fontSize="sm"
-            color="white"
-            backgroundColor="azul"
-            onClick={() => {
-              queryClient.invalidateQueries(["topRatedMoviesStale", page]);
-            }}
-          >
-            Invalidar cache da página atual
+            Invalidar cache
           </Button>
           <MoviesList movies={data.movies} />
           <Flex p="10" justifyContent="center">
